@@ -1,40 +1,47 @@
 import React, { Component } from 'react'
-import { Route, Link } from 'react-router-dom'
+import { Route, Link, Switch } from 'react-router-dom'
 import './App.css';
 import axios from 'axios'
 import Home from './pages/Home'
 import BeerDetail from './components/BeerDetail.js'
+import RandomBeer from './pages/RandomBeer.js'
 import Beers from './pages/Beers'
+import Nav from './components/Nav'
+import NewBeer from './pages/NewBeer';
 
 
 export default class App extends Component {
   constructor(props) {
     super(props)
     this.state = {
-      beers: []
+      beers: [],
+      random: ''
     }
 }
   componentDidMount() {
-    axios.get(`${process.env.REACT_APP_API}/beers`)
+    axios.get(`${process.env.REACT_APP_API}/beers/`)
       .then(response => {
       this.setState({beers: response.data})
-    })
-}
+      })
+      .catch(err => console.log(err))  
+  }
+  
   render() {
     return (
       <div>
-        {/* <BeerDetail/> */}
-        {/* <div>
-          {this.state.beers.map(beer => <Link to={`/beers/${beer._id}`}>{beer.name}</Link>)}
-        </div> */}
+        {<Nav/>}
         <div>
-          <Route exact path='/' component={Home} />
-          <Route exact path='/beers' render={routeProps => (
+          <Switch>
+            <Route exact path='/' component={Home} />
+            <Route path='/new-beer' component={NewBeer}/>
+            <Route exact path='/beers' render={routeProps => (
             <Beers {...routeProps} listOfBeers={this.state.beers}/>
-          )}/>
-          <Route path='/beers/:beer_id' render={routeProps => (
-            <BeerDetail {...routeProps} listOfBeers={this.state.beers}/>
-          )}/>
+            )} />
+            <Route path='/beers/random' component={RandomBeer} />
+            <Route path='/beers/:beerId' render={routeProps => (
+            <BeerDetail {...routeProps} beerItem={this.state.beers} />
+            )} />
+          </Switch>
         </div>
       </div>
     )
