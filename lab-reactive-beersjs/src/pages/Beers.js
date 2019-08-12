@@ -8,7 +8,7 @@ export default function Beers(props) {//react fragment insted of additional div
       return (
         <Link to={{
           pathname: `/beers/${beer._id}`,
-          state: {beer: beer.name}}
+          state: {beer: beer}}
         }> 
           <li className="beerSingle" key={beer._id}>
             {<img src={beer.image_url} alt="" />}

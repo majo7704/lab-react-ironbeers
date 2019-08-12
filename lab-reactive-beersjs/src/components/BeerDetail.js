@@ -7,11 +7,12 @@ import React, { Component } from 'react'
 
 export default class BeerDetail extends Component {
   state = {
-    activeBeer: [],
+    activeBeer: []
 
   }
   componentDidMount = () => {
-    const name = this.props.beerItem.name;
+    //match method
+    const name = this.props.match.params.beerId;
     axios.get(`${process.env.REACT_APP_API}/beers/${name}`)
       .then(response => {
         this.setState({ activeBeer: response.data})
@@ -19,11 +20,17 @@ export default class BeerDetail extends Component {
       .catch(err => console.log(err))
   }
   render() {
+    //match method
     const beer = this.state.activeBeer
+
+    //location method
+    // const beer2 = this.props.location.state.beer;
+
     return (
       <div>
         <div>
-          <img src={beer.image_url} alt=""/>
+          <img src={beer.image_url} alt={beer.name} />
+          {/* <img src={beer2.image_url} alt={beer2.name} /> */}
         </div>
       </div>
     )

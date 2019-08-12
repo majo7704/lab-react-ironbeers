@@ -14,25 +14,30 @@ export default class RandomBeer extends Component {
   componentDidMount() {
     axios.get(`${process.env.REACT_APP_API}/beers/random`)
       .then(response => {
-        this.setState({ random: response.data.name })
+        this.setState({ random: response.data, data: response.data})
       })
       .catch(err => console.log(err))
   }
 
-  handleClick = () => {
-    const randomBeer = this.state.beers[Math.floor(Math.random() * this.state.beers.length)]
-    this.setState({
-      clicked: true,
-      random: randomBeer
-    })
-  }
+  // handleClick = () => {
+  //   const randomBeer = this.state.beers[Math.floor(Math.random() * this.state.beers.length)]
+  //   this.setState({
+  //     clicked: true,
+  //     random: randomBeer
+  //   })
+  // }
   render() {
     const { random } = this.state
     return (
   
       <div>
         {/* <button value="CLick me!" onClick={this.handleClick}>Random Beer</button> */}
-        <h1>{random}</h1>
+        {this.state.random ?
+          <>
+            <h1>{random.name}</h1>
+            <img src={random.image_url}></img>
+          </>
+        : null }
         
       </div>
       
