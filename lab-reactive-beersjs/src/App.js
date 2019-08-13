@@ -11,6 +11,8 @@ import Beers from './pages/Beers'
 import NewBeer from './pages/NewBeer';
 import Signup from './components/auth/Signup'
 import Login from './components/auth/Login'
+import ProtectedRoute from './components/ProtectedRoute'
+import Profile from './pages/Profile'
 
 
 export default class App extends Component {
@@ -46,6 +48,7 @@ export default class App extends Component {
             <Route path='/beers/:beerId' render={routeProps => (
               <BeerDetail {...routeProps} beerItem={this.state.beers} />
             )} />
+            <ProtectedRoute redirectUrl='/auth/signup' path="/profile" component={Profile} />
           </Switch>
         </div>
       </div>

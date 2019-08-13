@@ -43,6 +43,8 @@ export default class Auth extends Component {
     localStorage.setItem('user', JSON.stringify(user));
   }
   getUser() {
+    let deleteLater = JSON.parse(localStorage.getItem('user'))
+    
     return JSON.parse(localStorage.getItem('user'));
   }
   logout() {

@@ -7,6 +7,7 @@ import './NewBeer.css'
 export default class NewBeer extends Component {
   constructor(props) {
     super(props)
+    this.formRef = React.createRef();
 
     this.state = {
       tagline: '',
@@ -27,11 +28,11 @@ export default class NewBeer extends Component {
     }
   handleFormSubmit = (e) => {
     e.preventDefault();
+    let form = new FormData(this.formRef.current)
     axios({
       method: "POST",
-      headers: { 'content-type': 'application/x-www-form-urlencoded' },
-      data: qs.stringify(this.state),
-      url: `${process.env.REACT_APP_API}/beers/new`
+      url: `${process.env.REACT_APP_API}/beers/new`,
+      data: form
     })
       .then((response) => {
         this.props.history.push("/")
@@ -43,7 +44,7 @@ export default class NewBeer extends Component {
       render() {
       return (
       <div className="add-beer">
-        <form onSubmit={this.handleFormSubmit} style={{ display: "flex", "flexWrap": "wrap" }}>{/* we don't want the default form submitting behaviour, so we're adding own submit handler   */}
+        <form ref={this.formRef} onSubmit={this.handleFormSubmit} style={{ display: "flex", "flexWrap": "wrap" }}>{/* we don't want the default form submitting behaviour, so we're adding own submit handler   */}
           <div>
             <label>Name:</label>
             <input type="text" name="name" placeholder="name" value={this.state.name} onChange={this.handleFormChange} /> {/* reacts wants to be in charge of all the data   */}
@@ -77,7 +78,12 @@ export default class NewBeer extends Component {
             <textarea type="text" placeholder="description" name="description" value={this.state.description} onChange={this.handleFormChange} />{/* reacts wants to be in charge of all the data   */}
           </div>
           <div>
-            <input type="submit" value="Submit" />
+            <label>Upload your photo:</label>
+            <input type="file" name="picture" />{/* reacts wants to be in charge of all the data   */}
+          </div>
+          <div>
+              <input type="submit" value="Submit" />
+
           </div>
         </form>
       </div>

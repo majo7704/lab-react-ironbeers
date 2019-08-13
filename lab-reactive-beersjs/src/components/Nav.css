@@ -2,15 +2,25 @@ header {
   display: flex;
   flex-direction: row;
   background-color: lightskyblue;
-  height: 50px;
+  height: 60px;
   padding: 10px;
   color: white;
   text-align: center;
   justify-content: center;
 }
 header img {
- width: 10%;
- padding: 2%;
+ width: 6%;
+ padding: 1%;
  align-content: space-between;
  margin-left: 2%;
 }
+.partOfProfile {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  
+}
+.welcome {
+  padding: 0 5%;
+}
+
