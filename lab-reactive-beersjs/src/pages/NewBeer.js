@@ -2,6 +2,7 @@ import React, { Component } from 'react'
 import axios from 'axios'
 import qs from 'query-string'
 import './NewBeer.css'
+import MainLayout from '../layout/MainLayout';
 
 
 export default class NewBeer extends Component {
@@ -42,10 +43,11 @@ export default class NewBeer extends Component {
       })
   }
       render() {
-      return (
+        return (
+        <MainLayout>
       <div className="add-beer">
         <form ref={this.formRef} onSubmit={this.handleFormSubmit} style={{ display: "flex", "flexWrap": "wrap" }}>{/* we don't want the default form submitting behaviour, so we're adding own submit handler   */}
-          <div>
+          <div classNmae="input-container">
             <label>Name:</label>
             <input type="text" name="name" placeholder="name" value={this.state.name} onChange={this.handleFormChange} /> {/* reacts wants to be in charge of all the data   */}
           </div>
@@ -79,14 +81,15 @@ export default class NewBeer extends Component {
           </div>
           <div>
             <label>Upload your photo:</label>
-            <input type="file" name="picture" />{/* reacts wants to be in charge of all the data   */}
+            <input className="upload-file" type="file" name="picture" />{/* reacts wants to be in charge of all the data   */}
           </div>
-          <div>
-              <input type="submit" value="Submit" />
+          <div className="submit-button">
+              <input  type="submit" value="Submit" />
 
           </div>
         </form>
-      </div>
+            </div>
+          </MainLayout>
     )
   }
 }

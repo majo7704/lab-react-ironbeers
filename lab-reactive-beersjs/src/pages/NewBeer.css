@@ -1,0 +1,26 @@
+.add-beer form{
+  display: flex;
+  flex-direction: column;
+  align-content: center;
+  justify-content: center;
+  padding: 7%;
+}
+
+.add-beer div {
+  display: flex;
+  padding: 10px;
+  justify-content: space-between;
+  
+}
+.add-beer label{
+  font-weight: bold;
+}
+.add-beer input {
+  padding: 3%;
+  border-radius: 10px;
+  text-align: center;
+}
+.submit-button input{
+  padding: 10px;
+  
+}

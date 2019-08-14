@@ -4,6 +4,7 @@ import axios from 'axios'
 import cors from 'cors'
 
 import React, { Component } from 'react'
+import MainLayout from '../layout/MainLayout';
 
 export default class BeerDetail extends Component {
   state = {
@@ -27,12 +28,14 @@ export default class BeerDetail extends Component {
     // const beer2 = this.props.location.state.beer;
 
     return (
+      <MainLayout>
       <div>
         <div>
           <img src={beer.image_url} alt={beer.name} />
           {/* <img src={beer2.image_url} alt={beer2.name} /> */}
         </div>
-      </div>
+        </div>
+      </MainLayout>
     )
   }
 }

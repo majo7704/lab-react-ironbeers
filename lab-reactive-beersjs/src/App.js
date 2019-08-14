@@ -34,7 +34,7 @@ export default class App extends Component {
   render() {
     return (
       <div>
-        {<Nav/>}
+        
         <div>
           <Switch>
             <Route exact path='/auth/signup' component={Signup} />
@@ -49,6 +49,7 @@ export default class App extends Component {
               <BeerDetail {...routeProps} beerItem={this.state.beers} />
             )} />
             <ProtectedRoute redirectUrl='/auth/signup' path="/profile" component={Profile} />
+            
           </Switch>
         </div>
       </div>

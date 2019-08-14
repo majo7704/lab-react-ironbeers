@@ -1,11 +1,13 @@
 import React from 'react'
 import Nav from '../components/Nav'
 
-export default function MainLayout(props) {
+
+const MainLayout = (props) => {
   return (
-<>
-    <Nav />
-    {props.children}
-</>
+    <>
+      <Nav />
+      {props.children}
+    </>
   )
 }
+export default MainLayout;

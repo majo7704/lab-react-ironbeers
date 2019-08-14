@@ -1,9 +1,11 @@
 import React from 'react'
 import { Link } from 'react-router-dom'
 import './Beers.css'
+import MainLayout from '../layout/MainLayout';
 
 export default function Beers(props) {//react fragment insted of additional div
   return (<>
+    
     {props.listOfBeers.map((beer) => {
       return (
         <Link to={{
@@ -19,7 +21,8 @@ export default function Beers(props) {//react fragment insted of additional div
         </Link>
       )
     })
-    }
+      }
+   
   </>)
 } 
   

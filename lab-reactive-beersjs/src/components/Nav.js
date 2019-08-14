@@ -19,7 +19,7 @@ class Nav extends Component {
       
       .then(() => {
         this.setState({ user: null }, () => {
-          frixProps.history.push('/auth/login');
+          frixProps.history.push('/');
       })
       })
       .catch((error) => {
@@ -34,15 +34,15 @@ class Nav extends Component {
       <header>
       <nav>
         <Link to={`/`}><img src={Home} alt="" /></Link>
-        {/* <Link className="signup" to={`/auth/signup`}><img src={Signup} alt="" /></Link> */}
+        <Link className="signup" to={`/auth/signup`}><img src={Signup} alt="" /></Link>
         {/* <Link to={`/profile`}>Profile</Link> */}
         {
           user ?
-              <div className="partOfProfile">
+            <>
               <Link to="/profile">Profile</Link>
-              <p className="welcome">Welcome {user.username}</p>
+              <p>Welcome {user.username}</p>
               <a href="#" onClick={this.handleLogout}>Logout</a>
-              </div>
+            </>
             :
             <Link className="signup" to='/auth/signup'><img src={Signup} alt="" /></Link>
         }
