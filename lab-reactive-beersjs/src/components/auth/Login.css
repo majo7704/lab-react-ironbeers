@@ -1,0 +1,20 @@
+form {
+    display: flex;
+    flex-wrap: wrap;
+    flex-direction: column;
+    margin: 0 auto;
+    padding: 10% 0 0 30%;
+  }
+  form div {
+    padding: 1%;
+    width: 60%;
+    display: flex;
+    justify-content: space-between;
+  }
+  form .auth-input {
+    width: 50%;
+    padding: 10px;
+    border-radius: 10px;
+    border: solid 1px lightblue;
+    font-size: 20px;
+  }

@@ -1,6 +1,7 @@
 import React, { Component } from 'react'
 import { Link } from 'react-router-dom'
 import Auth from '../../utils/Auth.js'
+import './Login.css'
 import cors from 'cors'
 const auth = new Auth();
 
@@ -33,25 +34,28 @@ export default class Login extends Component {
   }
   render() {
     return (
-      <div>
-        <form onSubmit={this.handleFormSubmit} style={{ display: "flex", "flexWrap": "wrap" }}>{/* we don't want the default form submitting behaviour, so we're adding own submit handler   */}
+      
+        <form onSubmit={this.handleFormSubmit}>{/* we don't want the default form submitting behaviour, so we're adding own submit handler   */}
           <div>
             <label>Username:</label>
-            <input type="text" name="username" placeholder="username" value={this.state.username} onChange={this.handleChange} /> {/* reacts wants to be in charge of all the data   */}
+            <input className='auth-input' type="text" name="username" placeholder="username" value={this.state.username} onChange={this.handleChange} /> {/* reacts wants to be in charge of all the data   */}
           </div>
 
           <div>
             <label>Password:</label>
-            <input type="text" name="password" placeholder="password" value={this.state.password} onChange={this.handleChange} />{/* reacts wants to be in charge of all the data   */}
+            <input className='auth-input' type="text" name="password" placeholder="password" value={this.state.password} onChange={this.handleChange} />{/* reacts wants to be in charge of all the data   */}
           </div>
-          <div>
-            <input type="submit" value="Login" />
+          <div style={{paddingTop:'10%'}}>
+            <input className='auth-input' style={{margin:'0 auto', backgroundColor:'lightBlue', color:'grey'}}  className='auth-input' type="submit" value="Login" />
           </div>
-        </form>
-        <p>Don't have account?
-            <Link to={'/auth/signup'}>Signup</Link>
+          <div style={{display: 'flex', margin:'0 auto'}}>
+          <p>Don't have account?
+            <Link to={'/auth/signup'} style={{color: 'grey'}}>Signup</Link>
         </p>
-      </div>
+        </div>
+        </form>
+        
+     
     )
   }
 }

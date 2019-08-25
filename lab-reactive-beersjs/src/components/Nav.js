@@ -14,12 +14,12 @@ class Nav extends Component {
   }
   handleLogout = (e) => {
     e.preventDefault();
-    var frixProps = this.props;
+    var fixProps = this.props;
     auth.logout()
       
       .then(() => {
         this.setState({ user: null }, () => {
-          frixProps.history.push('/');
+          fixProps.history.push('/');
       })
       })
       .catch((error) => {
